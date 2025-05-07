@@ -27,8 +27,12 @@ def get_char_count(filepath):
     return letter_dict
 
 
-def prettify_char_count():
-    lowest_letter = float("-inf")
+def letter_organizer(filepath):
+    dict = get_char_count(filepath)
+    dict_items = list(dict.items())
+    sorted_items = sorted(dict_items, key=lambda x: x[1], reverse=True)
+    for letter, count in sorted_items:
+        print(f"{letter}: {count}")
 
 
 def book_analysis(filepath):
@@ -38,3 +42,4 @@ def book_analysis(filepath):
     word_count = get_num_words(filepath)
     print(f"\nFound {word_count} total words\n")
     print("------Character Count------")
+    letter_organizer(filepath)
